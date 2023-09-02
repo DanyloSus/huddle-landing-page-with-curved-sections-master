@@ -18,7 +18,7 @@ const Section = ({
   imgTopM,
 }: SectionProps) => {
   return (
-    <section className="my-[100px] lg:text-center">
+    <section className="my-[100px] lg:text-center reveal">
       {imgTopM && (
         <img
           src={`./${imgTopM}`}
@@ -38,7 +38,7 @@ const Section = ({
           imgTop && "bg-very-pale-blue"
         }`}
       >
-        <img src={`./${img}`} alt={img} className="hidde lg:block" />
+        <img src={`./${img}`} alt={img} className="hidden lg:block" />
         {!imgBottom && (
           <img
             src={`./${img}`}

@@ -1,5 +1,3 @@
-import { Input } from "@chakra-ui/input";
-import { FormControl, FormErrorMessage } from "@chakra-ui/form-control";
 import { useState } from "react";
 
 const Footer = () => {
