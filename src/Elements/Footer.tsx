@@ -9,13 +9,37 @@ const Footer = () => {
     setData(e.target.value);
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const inp = document.getElementById("inp");
+    const err = document.getElementById("err");
+    if (err && inp) {
+      if (data) {
+        inp.classList.remove("border-light-red");
+        err.classList.remove("block");
+      } else {
+        inp.classList.add("border-light-red");
+        err.classList.remove("hidden");
+      }
+    }
+  };
+
   return (
     <footer className="mt-[100px] text-white">
-      <img src="./bg-footer-top-desktop.svg" alt="bg footer top desktop" />
-      <div className="w-screen h-auto pb-[104px] px-[120px] bg-very-dark-cyan flex justify-between pt-10">
-        <div className="max-w-[300px] flex flex-col gap-3">
+      <img
+        src="./bg-footer-top-mobile.svg"
+        alt="bg footer top mobile"
+        className="w-screen object-cover lg:block hidden"
+      />
+      <img
+        src="./bg-footer-top-desktop.svg"
+        alt="bg footer top desktop"
+        className="w-screen object-cover lg:hidden"
+      />
+      <div className="w-screen h-auto pb-[104px] px-[120px] bg-very-dark-cyan flex justify-between pt-10 lg:px-7 lg:flex-col-reverse lg:items-center">
+        <div className="max-w-[300px] flex flex-col gap-3 lg:text-sm lg:gap-6">
           <img src="./logo.png" alt="logo" className="w-[240px]" />
-          <p>
+          <p className="">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
             nulla quam, hendrerit lacinia vestibulum a, ultrices quis sem.
           </p>
@@ -52,23 +76,29 @@ const Footer = () => {
         </div>
         <div className="max-w-[520px] w-full flex flex-col gap-5">
           <h3 className="text-2xl">Newsletter</h3>
-          <p className="w-[336px] text-sm">
+          <p className="w-[336px] text-sm lg:text-[15.5px]">
             To recieve tips on how to grow your community, sign up to our weekly
             newsletter. We’ll never send you spam or pass on your email address
           </p>
-          <FormControl className="flex gap-5 w-full">
-            <Input
+          <form
+            className="flex gap-5 w-full lg:flex-col relative"
+            onSubmit={handleSubmit}
+          >
+            <input
               type="email"
               onChange={handleChange}
               value={data ? data : ""}
               className="text-black max-w-[320px] h-12 border rounded-lg w-full"
+              id="inp"
               required
             />
-            <FormErrorMessage>asdas</FormErrorMessage>
-            <button className="max-w-[160px] w-full h-12 text-white bg-pink shadow-xl rounded-lg hover:opacity-50 transition-opacity text-base font-semibold mb-20">
+            <span className="hidden absolute top-12 text-light-red" id="err">
+              Error
+            </span>
+            <button className="max-w-[160px] w-full h-12 text-white bg-pink shadow-xl rounded-lg hover:opacity-50 transition-opacity text-base font-semibold mb-20 lg:ml-auto">
               Subscribe
             </button>
-          </FormControl>
+          </form>
         </div>
       </div>
     </footer>
