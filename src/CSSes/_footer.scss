@@ -1,0 +1,8 @@
+footer {
+  p {
+    @apply flex items-center gap-5;
+  }
+  svg {
+    @apply w-8 h-8 fill-white cursor-pointer hover:fill-[#0bc7ff] transition-colors;
+  }
+}
